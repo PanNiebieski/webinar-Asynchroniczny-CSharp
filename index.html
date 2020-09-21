@@ -1,0 +1,2588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Asynchroniczny C#</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,900&amp;subset=latin-ext" rel="stylesheet" />
+
+    <!-- Shower Theme -->
+    <link rel="stylesheet" href="vendors/shower-ribbon/styles/screen-16x9.css" />
+    <link rel="stylesheet" href="vendors/shower-CezaryWalenciuk/styles/main.css" />
+
+ 
+    
+    <!-- Prism.js -->
+    <link rel="stylesheet" href="vendors/prism/prism.css" />
+    <link rel="stylesheet" href="vendors/prism/custom-prism.css" />
+    <link rel="stylesheet" href="codegrid.css" />
+</head>
+
+<body class="shower list">
+    <header class="caption">
+        <h1>Asynchroniczny C#</h1>
+        <p></p>
+    </header>
+
+    <section class="slide front-page">
+
+        <div class="details">
+            <!-- 1. Avatar -->
+
+
+            <h2>Cezary Walenciuk</h2>
+
+            <!-- 3. Presentation title -->
+            <h2 class="bigbig"><strong style="font-size: 35px;  line-height: 1.3;">
+
+                    <span class="titlec1">Asynchroniczny</span>
+                    <span class="">C#</span></strong></h2>
+
+
+
+            <!-- 5. Contact the speaker -->
+            <h2><a href="https://twitter.com/WalenciukC">@walenciukC</a></h2>
+        </div>
+        <div>
+
+
+            <!-- 2. Speaker -->
+
+        </div>
+        <div class="imag">
+            <img src="images/my-avatar.jpg" alt="Speaker">
+        </div>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">Asynchroniczny C# ma wiele pułapek
+        </span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">What</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 24px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 24px !important;">
+
+                        private static string result;
+
+                        static void Main()
+                        {
+                            SaySomething();
+                            Console.WriteLine(result);
+                        }
+                
+                        static async Task&#x3C;int&#x3E; SaySomething()
+                        {
+                            await Task.Delay(10);
+                            result = "Hello!";
+                            return 1;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">What</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 24px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 24px !important;">
+
+                        private static string result;
+
+                        static void Main()
+                        {
+                            SaySomething();
+                            Console.WriteLine(result);
+                        }
+                
+                        static async Task&#x3C;int&#x3E; SaySomething()
+                        {
+                            await Task.Delay(10);
+                            result = "Hello!";
+                            return 1;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    [NIC]
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">What 2</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 24px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 24px !important;">
+
+                        private static string result;
+
+                        static void Main()
+                        {
+                            SaySomething();
+                            Console.WriteLine(result);
+                        }
+                
+                        static async Task&#x3C;int&#x3E; SaySomething()
+                        {
+                            Thread.Sleep(10);
+                            result = "Hello!";
+                            return 1;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    Hello
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide grey  compact">
+        <h2>Asynchroniczny C#?</h2>
+        <ol>
+            <li class="next">Klasa Thread i ThreadPool</li>
+            <li class="next">Asynchronous Pattern Model -> IAsyncResult BeginInvoke</li>
+            <li class="next">Event Asynchronous Pattern -> BackgroundWorker</li>
+        </ol>
+    </section>
+    <section class="slide grey  compact">
+        <h2>Asynchroniczny C#?</h2>
+        <ol>
+            <li class="next">Task API</li>
+            <li class="next">Async i Await</li>
+        </ol>
+    </section>
+    <section class="slide grey  compact ">
+        <h2>Async i Await?</h2>
+        <ol>
+            <li class="next">Zaraz to mówimy o Rust czy o C#</li>
+            <li class="next">Zaraz to mówimy o JavaScript czy o C#</li>
+            <li class="next">Zaraz to mówimy o Python czy o C#</li>
+            <li class="next">Zaraz to mówimy o TypeScript czy o C#</li>
+        </ol>
+    </section>
+    <section class="slide grey  compact">
+        <h2>Async i Await?</h2>
+        <ol>
+            <li class="next">W C# istnieje on od 2012 roku</li>
+        </ol>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">Czym jest wątek?
+        </span>
+    </section>
+    <section class="slide grey  compact">
+        <h2>Czym jest wątek?</h2>
+        <ol>
+            <!-- <li class="next">Reprezentuje on pojedyńczą jednostkę wykonawczą w systemie operacyjnym</li> -->
+            <li class="next">Gdy chcesz wykonać kod to potrzebny jest wątek</li>
+            <li class="next">Wątki są planowane przez CPU/Procesor</li>
+        </ol>
+    </section>
+    <section class="slide prism ">
+        <div style="width: 100%; height: 100%;">
+            <pre style="font-size: 35px;overflow: hidden;     margin-top: -2.5em;" class="language-csharp">
+                <code  style="margin-left: -11em;">
+                    static void Main(string[] args)
+                    {
+                        int a = 11;
+                        int b = 22;
+                        int c = 33;
+                        int d = 44;
+                        int f = 55;
+                    
+                        a = a + b;
+                        b = c + d;
+                        c = a + b;
+                        d = f + d;
+                        f = a + b + c + d / 4;
+                    }
+                </code>
+            </pre>
+        </div>
+    </section>
+    <section class="slide prism over ">
+ 
+            <pre style="font-size: 13px;overflow: hidden;    margin-top: -2.5em;  " class="language-csharp">
+                <code style="margin-left: -3em;">
+            IL_0000: nop
+            IL_0001: ldc.i4.s 11
+            IL_0003: stloc.0
+            IL_0004: ldc.i4.s 22
+            IL_0006: stloc.1
+            IL_0007: ldc.i4.s 33
+            IL_0009: stloc.2
+            IL_000a: ldc.i4.s 44
+            IL_000c: stloc.3
+            IL_000d: ldc.i4.s 55
+            IL_000f: stloc.s 4
+            IL_0011: ldloc.0
+            IL_0012: ldloc.1
+            IL_0013: add
+            IL_0014: stloc.0
+            IL_0015: ldloc.2
+            IL_0016: ldloc.3
+            IL_0017: add
+            IL_0018: stloc.1
+            IL_0019: ldloc.0
+            IL_001a: ldloc.1
+            IL_001b: add
+            IL_001c: stloc.2
+            IL_001d: ldloc.s 4
+            IL_001f: ldloc.3
+            IL_0020: add
+            IL_0021: stloc.3
+            IL_0022: ldloc.0
+            IL_0023: ldloc.1
+            IL_0024: add
+            IL_0025: ldloc.2
+            IL_0026: add
+            IL_0027: ldloc.3
+            IL_0028: ldc.i4.4
+            IL_0029: div
+            IL_002a: add
+            IL_002b: stloc.s 4
+            IL_002d: ret
+        </code>
+    </pre>
+
+    </section>
+    <section class="slide greenmemory">
+        <span class="shout colors">Wątek, a sprzęt
+        </span>
+    </section>
+    <section class="slide grey  compact memory">
+        <h2>Wątek, a sprzęt</h2>
+        <ol>
+            <li class="next">Jeden procesor</li>
+            <li class="next">Wiele procesorów (serwer)</li>
+        </ol>
+    </section>
+    <section class="slide grey  compact memory">
+        <h2>Wątek, a sprzęt</h2>
+        <ol>
+            <li>Ile rdzeni ma twój jeden procesor?</li>
+            <li class="next">Technologia Hyper-Threading(Intel), 
+                SMT (AMD) : implementacja wielowątkowości współbieżności</li>
+        </ol>
+    </section>
+    <section class="slide greenmemory">
+        <span class="shout colors">W idealnym świecie miałbyś tyle rdzeni w procesorze ile masz wątków
+        </span>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_000.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_00.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <!-- <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_01.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section> -->
+    <!-- <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_02.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_04.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_06.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_07.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_08.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_09.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section> -->
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_10.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_11.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_12.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_13.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_04.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/0_06.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">Wątek i jego priority w Windows</span>
+    </section>
+    <section class="slide  compact">
+        <h2>Wątek i jego priority w Windows</h2>
+        <ol>
+            <li class="next">Od 0 do 31</li>
+            <li class="next">Nie do każdego "priority" masz dostęp na poziomie kodu</li>
+        </ol>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Ustawienie ważności danego wątku jeśli masz uprawnienia Admina</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 33px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 33px !important;">
+                        Process p = Process.GetCurrentProcess();
+                        p.PriorityClass = ProcessPriorityClass.High;
+            
+                        Thread t = Thread.CurrentThread;
+                        t.Priority = ThreadPriority.Normal;
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    Jak widzisz można zmienić priorytet swojego własnego procesu
+                </div>
+            </div>
+          </div>
+    </section>
+
+    <section class="slide dosblue">
+        <span class="shout colors">Kwant Czasu, co jest?</span>
+    </section>
+    <section class="slide black" >
+        <figure>
+            <img class="cover" src="pictures/thread_01.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+
+    <!-- <section class="slide  compact">
+        <h2>Sam wątek ma także swoje stany</h2>
+        <ol>
+            <li class="next">Ready</li>
+            <li class="next">Running</li>
+            <li class="next">Waiting</li>
+        </ol>
+    </section>
+    <section class="slide  compact">
+        <h2>Sam wątek ma także swoje stany</h2>
+        <ol>
+            <li class="next">Standby</li>
+            <li class="next">Terminated</li>
+            <li class="next">Initialized</li>
+        </ol>
+    </section> -->
+    <section class="slide memory compact">
+        <h2>Wątki podsumowanie</h2>
+        <ol>
+            <li class="next">Duże są koszty przełączania się pomiędzy wątkami</li>
+            <li class="next">Posiadanie zbyt wielu wątków nie ma sensu</li>
+            <li class="next">To, że coś działa wielo-wątkowo wcale nie znaczy, że będzie działało szybciej</li>
+        </ol>
+    </section>
+    <section class="slide greenmemory">
+        <span class="shout colors">Wielowątkowość sama w sobie nie powinna być celem</span>
+    </section>
+    <!-- <section class="slide memory  compact">
+        <h2>Wątki w .NET</h2>
+        <ol>
+            <li class="next">Są wątki Foreground i Background</li>
+            <li class="next">Są wątki specjalne jak : GC, debugger, finalizer</li>
+            <li class="next">Wątki w .NET są wątkami managed</li>
+        </ol>
+    </section> -->
+    <section class="slide greenmemory">
+        <span class="shout colors">Pokaż mi new Thread()</span>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">Warto pamiętać, że jest to rozwiązani przestarzałe</span>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">Obecnie być może użyteczne do absurdalnych długich zadań asychronicznych</span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Ustawienie ważności danego wątku</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 33px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 33px !important;">
+                        static void Main(string[] args)
+                        {
+                            Thread thread = new Thread(new ThreadStart(Do));
+                            thread.IsBackground = true;
+                            thread.Start();
+                            thread.Join();
+                        }
+                
+                        public static void Do()
+                        {}
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Ustawienie ważności danego wątku</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 25px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 25px !important;">
+                        static void Main(string[] args)
+                        {
+                            Thread thread2 = new Thread(new ParameterizedThreadStart(Do2));
+                            thread2.IsBackground = true;
+                            thread2.Start("parametr");
+                            thread2.Join();
+                        }
+                
+                        public static void Do2(object par)
+                        {}
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    Jeżeli potrzebne Ci są parametry, to pojawia się nowa delegata
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Tworzenie wątku new Thread</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        static void Main(string[] args)
+                        {
+                            Thread thread = new Thread(new ThreadStart(DoEx));
+                            thread.IsBackground = true;
+                            thread.Start();
+                            thread.Join();
+                        }
+            
+                        public static void DoEx()
+                        {
+                            throw new Exception();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    Aplikacja wywala się bez ostrzeżenia. Nie można tego zatrzymać.
+                </div>
+            </div>
+          </div>
+    </section>
+
+    
+    <!-- <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Thread.Sleep</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 77px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 77px !important;">
+                        Thread.Sleep(1);
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    Ten kod przełączy do następnego wątku tymczasowo i wróci po kwancie czasu
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Thread.Sleep</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 77px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 77px !important;">
+                        Thread.Sleep(0);
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    Ten kod przełączy do następnego wątku jeżeli jest w stanie ready. Nie zawsze tak jest
+                </div>
+            </div>
+          </div>
+    </section> -->
+    <section class="slide greenmemory">
+        <span class="shout colors">Klasa ThreadPool</span>
+    </section>
+    <section class="slide memory  compact">
+        <h2>Czym jest ThreadPool</h2>
+        <ol>
+            <li class="next">Pula wątków zarządza dwoma rodzajami wątków</li>
+            <li class="next">Worker Threads : roboczy wątek</li>
+            <li class="next">I/O completion port thread : wykonują one operację wejścia/wyjścia np. dysk</li>
+        </ol>
+    </section>
+    <section class="slide memory  compact">
+        <h2>Czym jest ThreadPool</h2>
+        <ol>
+            <li class="next">Używay przez WCF, ASP.NET/ASP.NET Core, TPL, PLinq (w sumie cały .NET)</li>
+            <li class="next">Nie możesz tworzyć swojej puli</li>
+            <li class="next">Posiada mechanizm trzymania "dobrej" liczby wątków</li>
+        </ol>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/threadpool.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">ThreadPool</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        int workerThreadsMin; int IOCPThreadMin;
+
+                        ThreadPool.GetMinThreads(out workerThreadsMin,
+                            out IOCPThreadMin);
+            
+                        int workerThreadsMax; int IOCPThreadMax;
+            
+                        ThreadPool.GetMaxThreads(out workerThreadsMax,
+                            out IOCPThreadMax);
+            
+                        ThreadPool.SetMaxThreads(1000, 32767);
+                        ThreadPool.SetMinThreads(8, 8);
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    Możesz ustawić liczbę wątków. Liczba maksymalnych wątków jest zależna od .NET Framework
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide memory  compact">
+        <h2>Minimum?</h2>
+        <ol>
+            <li class="next">Minimum wcale nie znaczy minimum</li>
+            <li class="next">Liczba ta zazwyczaj kontroluje jak szybko zostanie stworzony nowy wątek</li>
+            <li class="next">Mniej niż minimum : natychmiastowo, więcej niż minimum tworzy wątek z przerwami</li>
+        </ol>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">ThreadPool</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 47px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 47px !important;">
+                        Action<string> a = (state) => { };
+
+                        ThreadPool.
+                        QueueUserWorkItem(a, "StanOk", true);
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    Możesz dodać "zadanie"(workitem) do puli.
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">ThreadPool</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 37px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 37px !important;">
+                        static void Main(string[] args)
+                        {
+                            ThreadPool.QueueUserWorkItem(Do);
+                        }
+                
+                        public static void Do(object? state)
+                        {}
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    Możesz dodać "zadanie"(workitem) do puli.
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">ThreadPool</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 20px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 20px !important;">
+                        static void Main(string[] args)
+                        {
+                            AppDomain.CurrentDomain.UnhandledException
+                                += OnUnhandleException;
+                            ThreadPool.QueueUserWorkItem(Do);
+                        }
+                
+                        private static void OnUnhandleException(object sender, UnhandledExceptionEventArgs e)
+                        {
+                            Console.WriteLine("Terminacja? : " + e.IsTerminating);
+                            Console.WriteLine("Przyczyna : " + e.ExceptionObject);
+                        }
+                
+                        public static void Do(object? state)
+                        {
+                            throw new Exception();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    ThreadPool nie obsługuje wyjątków
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide greenmemory">
+        <span class="shout colors">IAsyncResult, czyli jak kiedyś robiło się asynchroniczne operacje</span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">IAsyncResult, czyli jak kiedyś robiło się asynchroniczne operacje</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 20px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 20px !important;">
+
+                        static void Main(string[] args)
+                        {              
+                            Func<int, int> method =
+                                (int a) => { return a; };
+                
+                            IAsyncResult handle =
+                                method.BeginInvoke(100,
+                                new AsyncCallback(WhenDone),
+                                new object());
+                        }
+                
+                        private static void WhenDone(IAsyncResult ar)
+                        {
+                            var target = (Func<int, int>)ar.AsyncState;
+                            int result = target.EndInvoke(ar);
+                
+                            Console.WriteLine(result);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    Dla .NET Core 3.1 dostaję PlatformNotSupported Exception
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide greenmemory">
+        <span class="shout colors">Kiedyś .NET miał mnóstwo metod BeginInvoke</span>
+    </section>
+    <section class="slide greenmemory">
+        <span class="shout colors">Był to asynchronous programming model (APM)</span>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">Event Asynchronous Pattern</span>
+    </section>
+    <!-- <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Event Asynchronous Pattern</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 18px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 18px !important;">
+
+                        static void Main(string[] args)
+                        {
+                            WebClient client = new WebClient();
+                
+                            client.DownloadStringCompleted += OnDownloadCompl;
+                            client.DownloadStringAsync(new Uri(@"http://cezarywalenciuk.pl"))
+                            Console.ReadKey();
+                        }
+                
+                        private static void OnDownloadCompl(object sender, 
+                            DownloadStringCompletedEventArgs e)
+                        {
+                            if (e.Cancelled)
+                                Console.WriteLine("Anulowane");
+                            else if (e.Error != null)
+                                Console.WriteLine(e.Error.Message);
+                            else
+                                Console.WriteLine(e.Result);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                   
+                </div>
+            </div>
+          </div>
+    </section> -->
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Event Asynchronous Pattern</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 20px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 20px !important;">
+                        static void Main(string[] args)
+                        {
+                            var worker = new BackgroundWorker();
+                
+                            worker.DoWork += WorkerDoSomething;
+                
+                            worker.ProgressChanged += Worker_ProgressChanged;
+                            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+                            worker.RunWorkerAsync(worker);
+                        }
+                
+                        private static void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+                        {}
+                        private static void WorkerDoSomething(object sender, DoWorkEventArgs e)
+                        {}
+                        private static void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+                        {}
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide greenmemory">
+        <span class="shout colors">Task API</span>
+    </section>
+    <section class="slide memory  compact">
+        <h2>Task i Task&#x3C;T&#x3E;</h2>
+        <ol>
+            <li class="next">Jest to obietnica, że operacja się zakończy</li>
+            <li class="next">Dostaniesz rezultat typu T</li>
+            <li class="next">Istniał on przed async/await</li>
+
+        </ol>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Thread.CurrentThread.IsBackground</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 33px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 33px !important;">
+                        static void Main()
+                        {
+                            Task
+                                .Factory
+                                .StartNew(
+                                    () => Console.WriteLine
+                                    (Thread.CurrentThread.IsBackground))
+                                .Wait();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz">
+                 
+                </div>
+            </div>
+          </div>
+    </section>    
+    
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Thread.CurrentThread.IsBackground 2</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 33px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 33px !important;">
+                        static void Main()
+                        {
+                            Task
+                                .Factory
+                                .StartNew(
+                                    () => Console.WriteLine
+                                    (Thread.CurrentThread.IsBackground))
+                                .Wait();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                  true
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide memory  compact">
+        <h2>Task i Task&#x3C;T&#x3E;</h2>
+        <ol>
+            <li class="next">Został on użyty ponownie gdy async/await się pojawił. </li>
+            <li class="next">Co komplikuje sprawę w kwestii : Co jest stare, a co nowe </li>
+        </ol>
+    </section>
+    <section class="slide memory  compact">
+        <h2>Task i Task&#x3C;T&#x3E; Stany</h2>
+        <ol>
+            <li class="next">Created/WaitingForActivation/WaitingToRun : stworzony, ale nie zaplanowany do uruchomienia</li>
+            <li class="next">Running : Działający</li>
+            <li class="next">WaitingForChildrenToComplete</li>
+        </ol>
+    </section>
+
+    <section class="slide memory  compact">
+        <h2>Task i Task&#x3C;T&#x3E; Stany</h2>
+        <ol>
+            <li class="next">RanToCompletion : Zakończony z sukcesem</li>
+            <li class="next">Faulted : Wyskoczył wyjątek</li>
+            <li class="next">Canceled : Został on odwołany</li>
+        </ol>
+    </section>
+    <section class="slide memory  compact">
+        <h2>Task i Task&#x3C;T&#x3E; Stany i właściwości warte do zapamietania</h2>
+        <ol>
+            <li class="next">IsCanceled</li>
+            <li class="next">IsFaulted</li>
+            <li class="next">IsCompleted : Prawda dla : RanToCompletion, Faulted,Canceled</li>
+        </ol>
+    </section>
+    <section class="slide memory  compact">
+        <h2>Task API</h2>
+        <ol>
+            <li class="next">Task.Run</li>
+            <li class="next">Task.Delay</li>
+            <li class="next">Task.Unwrap</li>
+            <li class="next">Task.Factory</li>
+        </ol>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Task Delay</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 33px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 33px !important;">
+                        static void Main(string[] args)
+                        {
+                            var d = DateTime.Now;
+                            Console.WriteLine(d.Minute + ":" + d.Second);
+                            Task.Delay(7000);
+                            var d2 = DateTime.Now;
+                            Console.WriteLine(d2.Minute + ":" + d2.Second);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz">
+                   
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Task Delay</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 33px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 33px !important;">
+                        static void Main(string[] args)
+                        {
+                            var d = DateTime.Now;
+                            Console.WriteLine(d.Minute + ":" + d.Second);
+                            Task.Delay(7000);
+                            var d2 = DateTime.Now;
+                            Console.WriteLine(d2.Minute + ":" + d2.Second);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                   [To samo]
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Task Delay</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 33px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 33px !important;">
+                        static void Main(string[] args)
+                        {
+                            var d = DateTime.Now;
+                            Console.WriteLine(d.Minute + ":" + d.Second);
+                            Task t = Task.Delay(7000);
+                            t.Wait();
+                            var d2 = DateTime.Now;
+                            Console.WriteLine(d2.Minute + ":" + d2.Second);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz ">
+               
+                </div>
+            </div>
+          </div>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Task Delay</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 33px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 33px !important;">
+                        static void Main(string[] args)
+                        {
+                            var d = DateTime.Now;
+                            Console.WriteLine(d.Minute + ":" + d.Second);
+                            Task t = Task.Delay(7000);
+                            t.Wait();
+                            var d2 = DateTime.Now;
+                            Console.WriteLine(d2.Minute + ":" + d2.Second);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    [Róźnica o 7 sekund]
+                </div>
+            </div>
+          </div>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Task Delay z async/await</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        static async Task Main(string[] args)
+                        {
+                            var d = DateTime.Now;
+                            Console.WriteLine(d.Minute + ":" + d.Second);
+                            await Task.Delay(7000);
+                            var d2 = DateTime.Now;
+                            Console.WriteLine(d2.Minute + ":" + d2.Second);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Task Delay z async/await</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        static void Main()
+                        {
+                            var t = What();
+                            Console.WriteLine(t.Status);
+                        }
+
+                        static Task What()
+                        {
+                            return new Task(
+                                () => Console.WriteLine("1"));
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz">
+
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Task Delay z async/await</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        static void Main()
+                        {
+                            var t = What();
+                            Console.WriteLine(t.Status);
+                        }
+
+                        static Task What()
+                        {
+                            return new Task(
+                                () => Console.WriteLine("1"));
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    Created
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">task.Start() -> Legacy</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 33px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 33px !important;">
+                        static void Main(string[] args)
+                        {
+                            Task task = new Task(Do);
+                            task.Start();
+                        }
+
+                        private static void Do(){}
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">task.Factory.StartNew() -> Legacy .NET 4.0+</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 33px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 33px !important;">
+                        static void Main(string[] args)
+                        {
+                            Task task = Task.Factory.StartNew(Do);
+                        }
+                
+                        private static void Do(){}
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">task.Run() -> OK .NET 4.5+</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 33px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 33px !important;">
+                        static void Main(string[] args)
+                        {
+                            Task task = Task.Run(Do);
+                        }
+                
+                        private static void Do(){}
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">task.Run() -> OK .NET 4.5+</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        static void Main(string[] args)
+                        {
+                            Task task = Task.Run(Do);
+                            task.Wait();
+                
+                            Task&#x3C;int&#x3E; task2 = Task.Run(Do2);
+                            var r = task2.Result;
+                        }
+
+                        private static void Do() { }
+                        private static int Do2() { return 1; }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">Ktoś wam powie, aby nie korzystać z <span class="yellow">"Wait"</span> czy <span class="yellow">"Result"</span>, tylko z</span>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">...GetAwaiter().GetResult() </span>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">to właśnie robi słowo kluczowe <span class="yellow">await</span></span>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">Róźnica polega na tym, że z "Wait" czy "Result" otrzymasz <span class="yellow">AggregateException</span></span>
+    </section>
+    <section class="slide memory  compact">
+        <h2>Task.Run vs Task.Factory.StartNew</h2>
+        <ol>
+            <li class="next">Task.Factory.StartNew nie działa z async i await</li>
+            <li class="next">Task.Run wystacza prawie zawsze</li>
+            <li class="next">Task.Factory.StartNew masz więcej opcji</li>
+        </ol>
+    </section>
+    <section class="slide memory  compact">
+        <h2>Task.Factory.StartNew ma np.</h2>
+        <ol>
+            <li class="next">Opcję LongRunning</li>
+            <li class="next">Opcję AttachedToParent</li>
+        </ol>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">task.Run() -> OK .NET 4.5+</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 20px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 20px !important;">
+                        var parent = Task.Factory.StartNew(() =>
+                        {
+                            Console.WriteLine("Parent Start");
+            
+                            var child = Task.Factory.StartNew(() =>
+                            {
+                                Console.WriteLine("ChildTask Start");
+                                Thread.Sleep(4000);
+                                Console.WriteLine("ChildTask End");
+
+                            }, TaskCreationOptions.AttachedToParent);
+            
+                            Console.WriteLine("Parent END");
+                        });
+            
+                        parent.Wait();
+                        Console.WriteLine("DEMO END");
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">task.Run() -> OK .NET 4.5+</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 20px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 20px !important;">
+                        var parent = Task.Factory.StartNew(() =>
+                        {
+                            Console.WriteLine("Parent Start");
+            
+                            var child = Task.Factory.StartNew(() =>
+                            {
+                                Console.WriteLine("ChildTask Start");
+                                Thread.Sleep(4000);
+                                Console.WriteLine("ChildTask End");
+
+                            }, TaskCreationOptions.AttachedToParent);
+            
+                            Console.WriteLine("Parent END");
+                        });
+            
+                        parent.Wait();
+                        Console.WriteLine("DEMO END");
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    Parent Start, Parent End, ChildTask Start, ChildTask End, DEMO END
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">DenyChildAttach</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 20px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 20px !important;">
+                        var parent = Task.Factory.StartNew(() =>
+                        {
+                            Console.WriteLine("Parent Start");
+            
+                            var child = Task.Factory.StartNew(() =>
+                            {
+                                Console.WriteLine("ChildTask Start");
+                                Thread.Sleep(4000);
+                                Console.WriteLine("ChildTask End");
+
+                            }, TaskCreationOptions.DenyChildAttach);
+            
+                            Console.WriteLine("Parent END");
+                        });
+            
+                        parent.Wait();
+                        Console.WriteLine("DEMO END");
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    Parent Start,Parent END,DEMO END,ChildTask Start
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">task.Run() Wyjątek</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 19px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 19px !important;">
+                        
+                        Task&#x3C;int&#x3E; task = Task.Run(() =>
+                        {
+                            throw new AccessViolationException();
+                            return -1;
+                        });
+                        Console.ReadKey();
+                        
+                        try
+                        {
+                            _ = task.Result;
+                        }
+                        catch (AggregateException ex)
+                        {
+                            if (ex.InnerExceptions is
+                                AccessViolationException)
+                            {
+                                Console.WriteLine(ex.Message)
+                            }
+                        
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide memory  compact">
+        <h2>Co się stanie, gdy nie będziesz obserwował wyjątku w Tasku</h2>
+        <ol>
+            <li class="next">GC za ciebie ogarnie sprawę</li>
+            <li class="next">Przed .NET 4 taka operacja zabiłaby aplikację</li>
+            <li class="next">Możesz zobaczyć ten wyjątek w TaskScheduler.UnobservedTaskException</li>
+            <!-- <li class="next">W konfiguracji możesz przwrócić stare zachowanie zabijania całej aplikacji</li> -->
+        </ol>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">task.Run() Wyjątek</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 20px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 20px !important;">
+                        static void Main(string[] args)
+                        {
+                            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
+                
+                            var task = Task.Run(() => { throw new Exception(); });
+                
+                        }
+                
+                        private static void TaskScheduler_UnobservedTaskException(object sender, 
+                            UnobservedTaskExceptionEventArgs e)
+                        {
+                            Console.WriteLine("Przegapiłeś :" + e.Exception);
+                            e.SetObserved();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+
+
+
+
+
+
+<!-- 
+
+     <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Domknięcia i Task.Run</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+
+                        for (int i = 0; i < 80; i++)
+                        {
+                            Task.Run(() => Console.WriteLine(i));
+                        }
+
+                        for (int i = 0; i < 11; i++)
+                        {
+                            Task.Run(() => Console.WriteLine(i));
+                        }
+
+                        Console.Read();
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/CO.PNG" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Domknięcia i Task.Run</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+
+                        for (int i = 0; i < 80; i++)
+                        {
+                            int temp = i;
+                            Task.Run(() => Console.WriteLine(temp));
+                        }
+            
+                        Console.Read();
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/CO2.PNG" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>  -->
+
+
+    <section class="slide dosblue">
+        <span class="shout colors">ContinueWith czyli po co stworzyl async i await</span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">ContinueWith -> Legacy</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+                        Task&#x3C;int&#x3E; t = Task.Run(() =>
+                        {
+                                return 44;
+                        });
+                                        
+                        Task&#x3C;int&#x3E; t2 = t.ContinueWith(a =>
+                        {
+                                return t.Result + 66;
+                        });
+                                        
+                        Console.WriteLine(t2.Result);
+                        Console.Read();
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">ContinueWith -> Legacy</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 20px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 20px !important;">
+                        Task&#x3C;int&#x3E;t = Task.Run(() =>
+                        {
+                            return 44;
+                        });
+                        
+                        Task&#x3C;int&#x3E; t2 = t.ContinueWith(a =>
+                        {
+                            return t.Result + 66;
+                        },
+                        TaskContinuationOptions.OnlyOnRanToCompletion);
+                        
+                        Task t3 = t.ContinueWith(a =>
+                        {
+                            Console.WriteLine("Error");
+
+                        }, TaskContinuationOptions.OnlyOnFaulted);
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide memory  compact">
+        <h2>Task.ContinueWith - Legacy</h2>
+        <ol>
+            <li class="next">Powinna być zastąpiona async/await</li>
+            <li class="next">async jest łatwiejszy do zrozumienia</li>
+            <li class="next">ContinueWith tworzy Taski</li>
+        </ol>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">CancellationTokenSource</span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">ContinueWith -> Legacy</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 16px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 16px !important;">
+                        var tokenSource2 = new CancellationTokenSource();
+                        CancellationToken ct = tokenSource2.Token;
+            
+                        var t = Task.Run(() =>
+                        {
+                            ct.ThrowIfCancellationRequested();
+                        });
+            
+                        try
+                        {
+                            t.Wait();
+                        }
+                        catch (OperationCanceledException e)
+                        {
+                            Console.WriteLine($"{nameof(OperationCanceledException)} thrown with message: {e.Message}");
+                        }
+                        finally
+                        {
+                            tokenSource2.Dispose();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">ContinueWith -> Legacy</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 16px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 16px !important;">
+                        var tokenSource2 = new CancellationTokenSource();
+                        CancellationToken ct = tokenSource2.Token;
+
+                        tokenSource2.Cancel();
+
+                        var t = Task.Run(() =>
+                        {
+                            
+                        }, ct);
+
+                        try
+                        {
+                            t.Wait();
+                        }
+                        catch (AggregateException e)
+                        {
+                            Console.WriteLine(e.InnerException);
+                        }
+                        finally
+                        {
+                            tokenSource2.Dispose();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">WaitAll i WaitAny</span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">ContinueWith -> Legacy</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 44px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 44px !important;">
+                        Task t1 = Task.Delay(2000);
+                        Task t2 = Task.Delay(4000);
+                        Task t3 = Task.Delay(6000);
+            
+                        Task.WaitAll(t1, t2, t3);
+                        Task.WaitAny(t1, t2, t3);
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">Unwrap</span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Task.Unwrap</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 24px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 24px !important;">
+                        Task&#x3C;Task&#x3C;Task&#x3C;int&#x3E;&#x3E;&#x3E; t =
+                            Task.Factory.StartNew
+                            (() =>
+                            {
+                                return Task.Factory.StartNew(
+                                () =>
+                                Task.Run(() => { return 1; }));
+            
+                            });
+            
+                        var result = t.Result.Result.Result;
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Task.Unwrap</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 24px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 24px !important;">
+                        Task&#x3C;Task&#x3C;Task&#x3C;int&#x3E;&#x3E;&#x3E; t =
+                            Task.Factory.StartNew
+                            (() =>
+                            {
+                                return Task.Factory.StartNew(
+                                () =>
+                                Task.Run(() => { return 1; }));
+            
+                            });
+                                    
+                        var unwrap = t.Unwrap();
+                        var unwrap2 = unwrap.Unwrap();
+                        var result = unwrap2.Result;
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">Async i Await
+        </span>
+    </section>
+
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async i Await</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 34px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 34px !important;">
+
+                        public int GiveNumber()
+                        {
+                            return -1;
+                        }
+
+                        public async Task&#x3C;int&#x3E; GiveNumberAsync()
+                        {
+                            return -1;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+
+                </div>
+            </div>
+          </div>
+    </section>
+
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async i Await</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 24px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 24px !important;">
+
+                        public async Task&#x3C;int&#x3E; GiveMeRandomNumberAsync()
+                        {
+                            var i = await GiveAnotherNumberAsync();
+                            return await GiveNumberAsync();
+                        }
+                            
+                        public async Task&#x3C;int&#x3E; GiveNumberAsync()
+                        {
+                            return 1;
+                        }
+                            
+                        public async Task&#x3C;int&#x3E; GiveAnotherNumberAsync()
+                        {
+                            return 2;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/asynciawait.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">"async void" wywala proces gdy pojawi się wyjątek
+        </span>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">"async void" istnieje dla starych apilkacji
+        </span>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">A dokładnie chodzi o event z parametrem wyjścia void
+        </span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async i Await</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 24px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 24px !important;">
+                        static async Task Main()
+                        {
+                            var numbers = 
+                                await File.ReadAllTextAsync(@"D:\numbers.txt");
+                
+                            Task&#x3C;string&#x3E; t = File.ReadAllTextAsync(@"D:\numbers2.txt");
+                            await t;
+                
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async i Await</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 12px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 12px !important;margin-left: -11em !important;">
+                        static async Task Main()
+                        {
+                            WriteThread("Begin Main");
+                            var a = await M1Async();
+                            WriteThread("Middle Main");
+                            var b = await M1Async();
+                            Console.WriteLine(a + b);
+                            WriteThread("End Main");
+                            Console.ReadKey();
+                        }
+                
+                        public static async Task&#x3C;int&#x3E; M1Async()
+                        {
+                            WriteThread("Begin M1Async");
+                            var i = await M2Async();
+                            WriteThread("End M1Async");
+                            return i + 1;
+                        }
+                
+                        public static async Task&#x3C;int&#x3E; M2Async()
+                        {
+                            WriteThread("At M2Async");
+                            return -1;
+                        }
+                
+                        public static void WriteThread(string helpfultoken)
+                        {
+                            Console.WriteLine(helpfultoken
+                                + " : " + Thread.CurrentThread.ManagedThreadId);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz">
+                   
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async i Await</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 12px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 12px !important;margin-left: -11em !important;">
+                        static async Task Main()
+                        {
+                            WriteThread("Begin Main");
+                            var a = await M1Async();
+                            WriteThread("Middle Main");
+                            var b = await M1Async();
+                            Console.WriteLine(a + b);
+                            WriteThread("End Main");
+                            Console.ReadKey();
+                        }
+                
+                        public static async Task&#x3C;int&#x3E; M1Async()
+                        {
+                            WriteThread("Begin M1Async");
+                            var i = await M2Async();
+                            WriteThread("End M1Async");
+                            return i + 1;
+                        }
+                
+                        public static async Task&#x3C;int&#x3E; M2Async()
+                        {
+                            WriteThread("At M2Async");
+                            return -1;
+                        }
+                
+                        public static void WriteThread(string helpfultoken)
+                        {
+                            Console.WriteLine(helpfultoken
+                                + " : " + Thread.CurrentThread.ManagedThreadId);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    [Wszędzie będzie 1]
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide greenmemory">
+        <span class="shout colors">Jak kto?<br>Nie ma nowych wątków?
+        </span>
+    </section>
+    <section class="slide greenmemory">
+        <span class="shout colors">Trywialne operacje nie tworzą nowych wątków.
+        </span>
+    </section>
+    <section class="slide greenmemory">
+        <span class="shout colors">Chociaż async i await stworzył maszynę stanów
+        </span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async i Await : Stan zadania decyduje czy nowy wątek zostanie stworzony</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 14px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 14px !important;">
+                        static async Task Main()
+                        {
+                            WriteThread("Begin Main");
+                            var a = await M1Async();
+                            WriteThread("Middle Main");
+                            var b = await M1Async();
+                            Console.WriteLine(a + b);
+                            WriteThread("End Main");
+                            Console.ReadKey();
+                        }
+                
+                        public static async Task&#x3C;int&#x3E; M1Async()
+                        {
+                            WriteThread("Begin M1Async");
+                            await Task.Delay(2000);
+                            WriteThread("End M1Async");
+                            return 0;
+                        }
+                
+                        public static void WriteThread(string helpfultoken)
+                        {
+                            Console.WriteLine(helpfultoken
+                                + " : " + Thread.CurrentThread.ManagedThreadId);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3>💡 Co pojawi się w konsoli?</h3>
+                </div>
+                <div class="odpowiedz full">
+                    1,1,4,4,4,4
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Async i Await : maszyna stanów pamięta zakończenie</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 34px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 34px !important;">
+
+                        static async Task Main()
+                        {
+                            Task&#x3C;string&#x3E; t = 
+                            File.ReadAllTextAsync(@"D:\numbers2.txt");
+
+                            await t;
+                            await t;
+                            await t;
+                            await t;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide ">
+        <span class="shout colors">Rzeczy, o których warto opowiedzieć.
+        </span>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">async eliding
+        </span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">async eliding</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 34px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 34px !important;">
+                        static Task&#x3C;int&#x3E; M1()
+                        {
+                            return Task.FromResult(1);
+                        }
+                            
+                        static async Task&#x3C;int&#x3E; M2()
+                        {
+                            return await M1();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    Przekazywanie Tasków wyżej wydaje się dobrym pomysłem, ale nie zawsze
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Eliding Async and Await : PROBLEM</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 30px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 30px !important;">
+                        public async Task&#x3C;string&#x3E; GetWithKeywordsAsync(string url)
+                        {
+                            using (var client = new HttpClient())
+                                return await client.GetStringAsync(url);
+                        }
+                            
+                        public Task&#x3C;string&#x3E; GetElidingKeywordsAsync(string url)
+                        {
+                            using (var client = new HttpClient())
+                                return client.GetStringAsync(url);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    Wykona się Dispose w HttpClient więc zwrócony Task nie będzie mógł się wykonać
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="pictures/task_exceptioon.png" alt="blog">
+            <figcaption class="white">Copyright © Cezary Walenciuk</figcaption>
+        </figure>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">async i await exception</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 20px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 20px !important;">
+                        static async Task Main()
+                        {
+                            var task = M2();
+                
+                            if (task.IsFaulted)
+                                Console.WriteLine("Error");
+                        }
+                
+                        static Task&#x3C;int&#x3E; M1()
+                        {
+                            throw new Exception();
+                        }
+                
+                        static async Task&#x3C;int&#x3E; M2()
+                        {
+                            return await M1();
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">Nigdy nie zwracajcie NULL jako informację, że coś poszło nie tak
+        </span>
+    </section>
+    <section class="slide greenmemory">
+        <span class="shout colors">CancellationTokenSource
+        </span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">CancellationTokenSource</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 24px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 24px !important;">
+
+                        static async Task Main()
+                        {
+                            CancellationTokenSource tokenSource = new CancellationTokenSource();
+                            CancellationToken token = tokenSource.Token;
+                            tokenSource.Cancel();
+                
+                            var task = await ReadFile(token);
+                
+                        }
+                
+                        static async Task&#x3C;string&#x3E; ReadFile(CancellationToken cancellation = default)
+                        {
+                            var t = await File.ReadAllTextAsync(@"D:\numbers2.txt", token);
+                            return t;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+
+
+    <section class="slide greenmemory">
+        <span class="shout colors">ValueTask
+        </span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">ValueTask</h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 24px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 24px !important;">
+                        static ValueTask&#x3C;double&#x3E; Do(int divideArg)
+                        {
+                            if (divideArg == 0)
+                                return new ValueTask&#x3C;double&#x3E;(0);
+                            
+                            return new ValueTask&#x3C;double>
+                                (Divide(divideArg));
+                        }
+                            
+                        static Task&#x3C;double&#x3E; Divide(int divideArg)
+                        {
+                                double a = 1 / divideArg;
+                                return Task.FromResult(a);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide dosblue">
+        <span class="shout colors">Task, Async. <br />Katastrofalny błąd
+        </span>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Task, Async. </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+
+                        static async Task Main()
+                        {
+                            await What();
+                        }
+                
+                        static Task What()
+                        {
+                            return new Task(
+                                () => Console.WriteLine("1"));
+                
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Task, Async. </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 27px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 27px !important;">
+
+                        static async Task Main()
+                        {
+                            Task t = What();
+                            await t;
+                
+                            var s = t.Status;
+                        }
+                
+                        static Task What()
+                        {
+                            return new Task(
+                                () => Console.WriteLine("1"));
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+    <section class="slide prism over bhgry">
+        <div class="grid-container">
+            <div class="HeaderTitle">
+                <h2 class="headerCODE">Task, Async. </h2>
+            </div>
+            <div class="PlaceCodeHere">
+                <pre style="font-size: 34px;overflow: hidden;  " class="language-csharp">
+                    <code style="line-height: 34px !important;">
+                        await Task.Run
+                        (
+                            () => DoExpensiveOperation(someParameter)
+                        );
+                    </code>
+                </pre>
+            </div>
+            <div class="AnswerCode">
+                <div class="pytanie">
+                    <h3></h3>
+                </div>
+                <div class="odpowiedz">
+                    
+                </div>
+            </div>
+          </div>
+    </section>
+
+    <!-- <div class="progress"></div> -->
+
+
+
+    <footer class="badge badge-top-left">
+        <a href="#" class="fullscreen">Fullscreen</a>
+    </footer>
+
+    <script src="vendors/gamepad/gamepad.js"></script>
+    <script src="vendors/shower/shower.min.js"></script>
+    <script src="vendors/shower-gamepad/shower.gamepad.js"></script>
+    <script src="vendors/shower-warsawjs/scripts/fullscreen.js"></script>
+
+    <!-- Prism.js -->
+    <script src="vendors/prism/prism.js"></script>
+    <script src="vendors/prism/custom-prism.js"></script>
+    <script language="javascript">
+        // var pre_elements = document.getElementsByTagName('pre');
+
+        // for (var i = 0; i < pre_elements.length; i++)
+        // {
+        //     var content = pre_elements[i].innerHTML;
+
+        //     var tabs_to_remove = '';
+        //     while (content.indexOf('\t') == '0')
+        //     {
+        //       tabs_to_remove += '\t';
+        //       content = content.substring(1);
+        //     }
+
+        //     var re = new RegExp('\n' + tabs_to_remove, 'g');
+        //     content = content.replace(re, '\n');
+        //     pre_elements[i].outerHTML = '<pre class="language-csharp">' + content + '</pre>';
+        // }
+    </script>
+</body>
+
+</html>
